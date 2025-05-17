@@ -1,0 +1,126 @@
+.comic-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 22px;
+    font-size: 18px;
+    font-weight: 600;    border-radius: 10px;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.2s ease-in-out;
+    box-shadow: 4px 4px 0px #222;
+    background-color: #000;
+    color: white;
+  }
+  
+  /* 👉 PRESS EFFECT: Straight Down */
+  .comic-button:active {
+    transform: translateY(2px);
+    box-shadow: none;
+  }
+  
+  /* GLOW STRIP */
+  .comic-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -75%;
+    height: 100%;
+    width: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    transform: skewX(-20deg);
+    z-index: 1;
+    pointer-events: none;
+  }
+  
+  /* LOOPING GLOW ON HOVER */
+  .comic-button:hover::before {
+    animation: shine 1.2s linear infinite;
+  }
+  
+  @keyframes shine {
+    0% { left: -75%; }
+    100% { left: 125%; }
+  }
+  
+  /* Text always above glow */
+  .button-text {
+    position: relative;
+    z-index: 2;
+  }
+  
+  .icon {
+    font-size: 20px;
+    z-index: 2;
+  }
+  
+  /* === GET STARTED BUTTON === */
+  .comic-button.default {
+    background-color: #ff5252;
+    border: 2px solid #ffffff;
+
+    color: white;
+    box-shadow: 2px 4px 0px #d10000;
+  }
+  
+  .comic-button.default:hover {
+    background-color: #fcd34d; /* yellow-300 */
+    color: #ff5252;
+    border: 2px solid #ff3939;
+    box-shadow: 2px 4px 0px #ff6161;
+  }
+  
+  .comic-button.default:hover .arrow-icon {
+    animation: bounceArrow 1s ease-in-out infinite;
+  }
+  
+  @keyframes bounceArrow {
+    0% { transform: translateX(0); opacity: 1; }
+    30% { transform: translateX(10px); opacity: 0.8; }
+    60% { transform: translateX(-6px); opacity: 0.9; }
+    100% { transform: translateX(0); opacity: 1; }
+  }
+  
+  /* === LEADERBOARD BUTTON === */
+  .comic-button.leaderboard {
+    background-color: #fff;
+    border: 2px solid #000;
+    color: #000;
+    box-shadow: 2px 4px 0px rgb(0, 0, 0);
+  }
+  
+  .comic-button.leaderboard:hover {
+    background-color: #000;
+    color: #fff;
+    box-shadow: 2px 4px 0px rgba(73, 71, 71, 0.865);
+  }
+  
+  .comic-button.leaderboard .medal-icon {
+    transition: transform 0.4s ease;
+  }
+  
+  .comic-button.leaderboard:hover .medal-icon {
+    animation: medalPop 1s ease-in-out infinite;
+  }
+  
+  @keyframes medalPop {
+    0% { transform: scale(1) rotate(0deg); }
+    25% { transform: scale(1.1) rotate(-5deg); }
+    50% { transform: scale(1.2) rotate(5deg); }
+    75% { transform: scale(1.1) rotate(-2deg); }
+    100% { transform: scale(1) rotate(0deg); }
+  }
+  @media screen and (max-width: 640px) {
+    .comic-button {
+      padding: 8px 16px;
+      font-size: 14px;
+      gap: 6px;
+      border-radius: 8px;
+    }
+  
+    .icon {
+      font-size: 16px;
+    }
+  }
+  
